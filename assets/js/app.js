@@ -322,7 +322,9 @@ function setupChapterLetter(config) {
     config.letter.paragraphs.forEach(p => {
       const pEl = document.createElement('p');
       pEl.textContent = p;
-      if (p.includes("Love you")) {
+      if (p.includes("Har kisi ki") || p.includes("kismat")) {
+        pEl.className = "letter-shayari-box";
+      } else if (p.includes("Love you")) {
         pEl.className = "letter-love-highlight";
       }
       paragraphsArea.appendChild(pEl);

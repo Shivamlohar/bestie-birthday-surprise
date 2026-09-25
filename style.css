@@ -904,6 +904,21 @@ body {
   color: #432e57;
 }
 
+.letter-shayari-box {
+  background: linear-gradient(135deg, rgba(255, 238, 245, 0.95) 0%, rgba(246, 237, 255, 0.95) 100%);
+  border-left: 4px solid #ff4757;
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin: 10px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem !important;
+  color: #a31545 !important;
+  line-height: 1.8 !important;
+  box-shadow: 0 4px 16px rgba(255, 71, 87, 0.12);
+  white-space: pre-line;
+}
+
 .letter-love-highlight {
   font-family: var(--font-serif);
   font-size: 1.25rem !important;

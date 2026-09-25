@@ -24,8 +24,8 @@ window.SURPRISE_CONFIG = {
 
   // 🌌 INITIAL SCREEN (Dark Void with Single Star)
   initialScreen: {
-    line1: "I made something for you...",
-    line2: "But you have to discover it yourself. ✨",
+    line1: "I made something special for you...",
+    line2: "Tap karke discover karo apna birthday universe ✨",
     buttonText: "Begin the Journey →"
   },
 
@@ -113,6 +113,8 @@ window.SURPRISE_CONFIG = {
     paragraphs: [
       "I don't know if I say this enough, but I'm genuinely grateful that I met you.",
       "Thank you for the random conversations, the stupid jokes, the unforgettable moments, and all the little things that somehow became memories.",
+      "Ye pyari si shayari specially tere liye, Manvi:",
+      "Har kisi ki kismat mein tere jaisa dost nahi hota,\nHar koi dosti mein itna pyara aur dildaar nahi hota...\nMilte hain log toh zameen par hazaron, Manvi,\nPar tere jaisa cute aur crazy koi aur nahi hota! ❤️✨",
       "Some people become important without even trying.",
       "You're one of those people.",
       "I hope this birthday gives you at least a little bit of the happiness you've given to the people around you.",
