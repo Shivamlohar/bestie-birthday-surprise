@@ -1,9 +1,9 @@
 /**
  * ====================================================================
- * 🎵 ROMANTIC AUDIO CONTROLLER & LOFI SYNTHESIZER
+ * 🎵 ROMANTIC AUDIO CONTROLLER & CELESTIAL SYNTHESIZER
  * ====================================================================
- * Handles seamless audio playback, mobile autoplay compliance,
- * animated equalizer pills, and an ambient piano/chime fallback synthesizer.
+ * Smooth romantic audio playback, mobile user-activation compliance,
+ * animated equalizer pills, and an ambient acoustic piano fallback synthesizer.
  */
 
 class RomanticAudioPlayer {
@@ -11,9 +11,16 @@ class RomanticAudioPlayer {
     this.config = config.music || {};
     this.isPlaying = false;
     this.isSynth = false;
+
+    // Initialize audio element with volume & loop
     this.audioElement = new Audio();
     this.audioElement.loop = true;
+    this.audioElement.volume = 0.7;
     this.audioElement.preload = 'auto';
+
+    if (this.config.src) {
+      this.audioElement.src = this.config.src;
+    }
 
     // UI elements
     this.btn = document.getElementById('music-toggle-btn');
@@ -47,6 +54,7 @@ class RomanticAudioPlayer {
 
     this.audioElement.addEventListener('play', () => {
       this.isPlaying = true;
+      this.isSynth = false;
       this.updateUI(true);
     });
 
@@ -58,7 +66,7 @@ class RomanticAudioPlayer {
     });
 
     this.audioElement.addEventListener('error', (e) => {
-      console.warn("External audio source unavailable, switching to ambient synth fallback:", e);
+      console.warn("External MP3 unavailable, switching to romantic synth fallback:", e);
       if (this.isPlaying) {
         this.startLofiSynth();
       }
@@ -79,7 +87,9 @@ class RomanticAudioPlayer {
     this.ensureAudioContext();
 
     if (this.config.src) {
-      this.audioElement.src = this.config.src;
+      if (!this.audioElement.src || this.audioElement.src === '') {
+        this.audioElement.src = this.config.src;
+      }
       const playPromise = this.audioElement.play();
       if (playPromise !== undefined) {
         playPromise
@@ -89,7 +99,7 @@ class RomanticAudioPlayer {
             this.updateUI(true);
           })
           .catch((err) => {
-            console.log("Audio playback was blocked or file missing. Using soothing synth fallback:", err);
+            console.log("Audio playback blocked by browser or file issue. Using romantic synth fallback:", err);
             this.startLofiSynth();
           });
       }
@@ -109,7 +119,7 @@ class RomanticAudioPlayer {
     if (!this.btn) return;
     if (playing) {
       this.btn.classList.add('playing');
-      if (this.btnText) this.btnText.textContent = "Pause Our Song";
+      if (this.btnText) this.btnText.textContent = "Romantic Melody ❤️";
       if (this.equalizer) this.equalizer.classList.remove('paused');
     } else {
       this.btn.classList.remove('playing');
@@ -118,8 +128,7 @@ class RomanticAudioPlayer {
     }
   }
 
-  // 🎹 Ambient Romantic Lo-Fi Music Synthesizer (Zero dependencies!)
-  // Creates a warm, gentle music box / acoustic chime progression (C - G - Am - F)
+  // 🎹 Ambient Romantic Lo-Fi Piano Synthesizer (Zero dependencies fallback)
   startLofiSynth() {
     this.isSynth = true;
     this.isPlaying = true;
@@ -127,14 +136,13 @@ class RomanticAudioPlayer {
 
     if (!this.audioCtx) return;
 
-    // Frequencies for a romantic melody: C4, E4, G4, B4, C5, D5, E5, G5, A5
+    // Romantic acoustic love chord frequencies (C, Em, Am, F)
     const notes = [
       261.63, 329.63, 392.00, 493.88, 523.25, 587.33, 659.25, 783.99, 880.00
     ];
 
-    // Delicate arpeggio sequence
     const sequence = [
-      [0, 2, 4, 6], // C major
+      [0, 2, 4, 6], // C major arpeggio
       [7, 4, 2, 0],
       [5, 4, 2, 0], // G/B
       [0, 1, 3, 5], // A minor
@@ -170,26 +178,23 @@ class RomanticAudioPlayer {
     const gain = this.audioCtx.createGain();
     const filter = this.audioCtx.createBiquadFilter();
 
-    // Soft warm sine/triangle wave blend
     osc.type = 'sine';
     osc.frequency.setValueAtTime(freq, now);
 
-    // Warm lowpass filter to emulate acoustic music box
     filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(1200, now);
-    filter.Q.setValueAtTime(1, now);
+    filter.frequency.setValueAtTime(1100, now);
+    filter.Q.setValueAtTime(1.2, now);
 
-    // Gentle fade in & long exponential release
     gain.gain.setValueAtTime(0.001, now);
-    gain.gain.linearRampToValueAtTime(0.08, now + 0.05);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+    gain.gain.linearRampToValueAtTime(0.09, now + 0.06);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.9);
 
     osc.connect(filter);
     filter.connect(gain);
     gain.connect(this.audioCtx.destination);
 
     osc.start(now);
-    osc.stop(now + 1.85);
+    osc.stop(now + 1.95);
   }
 
   stopLofiSynth() {
