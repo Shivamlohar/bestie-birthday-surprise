@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffecd2"/>
+      <stop offset="100%" stop-color="#fcb69f"/>
+    </linearGradient>
+    <radialGradient id="flowerPink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff9a9e"/>
+      <stop offset="100%" stop-color="#fecfef"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#bgGrad4)" rx="24"/>
+
+  <!-- Large Glass Jar / Vase -->
+  <path d="M230 330 C 210 330, 200 450, 210 500 C 220 540, 380 540, 390 500 C 400 450, 390 330, 370 330 Z" fill="#ffffff" opacity="0.65"/>
+  <ellipse cx="300" cy="330" rx="70" ry="15" fill="#ffffff" opacity="0.8"/>
+  <ellipse cx="300" cy="510" rx="80" ry="20" fill="#f8a5c2" opacity="0.4"/>
+
+  <!-- Water line -->
+  <ellipse cx="300" cy="420" rx="85" ry="18" fill="#e0f2fe" opacity="0.5"/>
+
+  <!-- Flower stems -->
+  <path d="M250 260 Q 270 380, 290 480" stroke="#78a87b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M300 240 Q 300 360, 305 490" stroke="#8cb88f" stroke-width="7" stroke-linecap="round"/>
+  <path d="M350 260 Q 330 380, 315 480" stroke="#78a87b" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Flower 1 (Rose Pink Center) -->
+  <g transform="translate(300, 200)">
+    <circle cx="-25" cy="-10" r="30" fill="#ff7675" opacity="0.9"/>
+    <circle cx="25" cy="-10" r="30" fill="#ff7675" opacity="0.9"/>
+    <circle cx="-15" cy="25" r="30" fill="#ff7675" opacity="0.9"/>
+    <circle cx="15" cy="25" r="30" fill="#ff7675" opacity="0.9"/>
+    <circle cx="0" cy="0" r="34" fill="#fab1a0"/>
+    <circle cx="0" cy="0" r="16" fill="#ffeaa7"/>
+  </g>
+
+  <!-- Flower 2 (Lavender Left) -->
+  <g transform="translate(210, 240)">
+    <circle cx="-18" cy="-8" r="22" fill="#a29bfe" opacity="0.9"/>
+    <circle cx="18" cy="-8" r="22" fill="#a29bfe" opacity="0.9"/>
+    <circle cx="-12" cy="18" r="22" fill="#a29bfe" opacity="0.9"/>
+    <circle cx="12" cy="18" r="22" fill="#a29bfe" opacity="0.9"/>
+    <circle cx="0" cy="0" r="24" fill="#d6a2e8"/>
+    <circle cx="0" cy="0" r="12" fill="#fdcb6e"/>
+  </g>
+
+  <!-- Flower 3 (Pastel Peach Right) -->
+  <g transform="translate(390, 240)">
+    <circle cx="-18" cy="-8" r="22" fill="#fd79a8" opacity="0.9"/>
+    <circle cx="18" cy="-8" r="22" fill="#fd79a8" opacity="0.9"/>
+    <circle cx="-12" cy="18" r="22" fill="#fd79a8" opacity="0.9"/>
+    <circle cx="12" cy="18" r="22" fill="#fd79a8" opacity="0.9"/>
+    <circle cx="0" cy="0" r="24" fill="#ffb8b8"/>
+    <circle cx="0" cy="0" r="12" fill="#ffeaa7"/>
+  </g>
+
+  <!-- Cute bow on vase -->
+  <g transform="translate(300, 335)">
+    <ellipse cx="-18" cy="0" rx="16" ry="10" fill="#ff7675"/>
+    <ellipse cx="18" cy="0" rx="16" ry="10" fill="#ff7675"/>
+    <circle cx="0" cy="0" r="7" fill="#d63031"/>
+    <path d="M-6 5 L -16 26" stroke="#ff7675" stroke-width="5" stroke-linecap="round"/>
+    <path d="M6 5 L 16 26" stroke="#ff7675" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Ambient sparkles -->
+  <g fill="#ffffff" opacity="0.9">
+    <circle cx="130" cy="120" r="4"/>
+    <circle cx="480" cy="150" r="5"/>
+    <circle cx="430" cy="380" r="4"/>
+    <circle cx="150" cy="420" r="3"/>
+  </g>
+</svg>

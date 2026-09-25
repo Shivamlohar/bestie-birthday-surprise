@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Bestie Birthday QR Card ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 30px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #ffeff3 0%, #f3e7fc 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #3e204a;
+    }
+    .wrapper {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .card-img {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(180, 120, 160, 0.25);
+      background: #ffffff;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 117, 140, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-pink {
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+      color: #ffffff;
+    }
+    .btn-white {
+      background: #ffffff;
+      color: #ff6584;
+      border: 1px solid #ffd1dc;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 style="font-size: 1.8rem; margin: 0;">Yeh Raha Aapka QR Code! 💌✨</h1>
+    <p style="margin: 0; color: #7d6b85; font-size: 0.95rem;">
+      Isko direct apne phone se scan kar sakte ho ya print karke gift mein de sakte ho!
+    </p>
+
+    <!-- Embedded High-Res SVG Card -->
+    <img src="bestie-qr-card.svg" alt="Bestie Birthday QR Card" class="card-img">
+
+    <div class="actions">
+      <a href="bestie-qr-card.svg" download="Bestie-Birthday-QR-Card.svg" class="btn btn-pink">
+        📥 Download QR Card (SVG)
+      </a>
+      <a href="bestie-qr-code.png" download="Bestie-Birthday-QR-Code.png" class="btn btn-white">
+        📥 Download QR Code (PNG)
+      </a>
+      <button onclick="window.print()" class="btn btn-white">
+        🖨️ Print Card
+      </button>
+    </div>
+  </div>
+</body>
+</html>

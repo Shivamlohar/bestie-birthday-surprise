@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#ffeff3">
+
+  <title>Happy Birthday, Bestie! ❤️✨</title>
+
+  <!-- Google Fonts: Playfair Display + Plus Jakarta Sans + Sacramento -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🎨 Canvas for floating ambient hearts, sparkles and confetti -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- 🎵 Floating Music Bar & QR Action -->
+  <header class="floating-music-bar">
+    <button id="music-toggle-btn" class="music-pill-btn" aria-label="Toggle background music">
+      <span id="music-btn-text">🎵 Play Our Song</span>
+      <div id="music-equalizer" class="music-equalizer paused">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
+    </button>
+    <button id="open-qr-modal-btn" class="qr-trigger-btn" title="Generate QR Code" aria-label="Open QR Code Generator">
+      📱
+    </button>
+  </header>
+
+  <main class="app-container">
+
+    <!-- ==========================================
+         🌟 SCREEN 1: LANDING SCREEN
+         ========================================== -->
+    <section id="section-landing" class="screen-fullscreen">
+      <div class="landing-content glass-card">
+        <div class="floating-avatar-badge">💌</div>
+        <h1 class="landing-title">Hey Bestie... ❤️</h1>
+        <p class="landing-subtitle">I made something special for you...</p>
+        <button id="start-surprise-btn" class="btn-primary-glow">
+          Open Your Surprise ✨
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         🎬 SCREEN 2: CINEMATIC INTRO ANIMATION
+         ========================================== -->
+    <section id="section-intro" class="intro-container hidden">
+      <div class="intro-quote-card glass-card">
+        <p id="intro-line-1" class="intro-line">Some people enter your life...</p>
+        <p id="intro-line-2" class="intro-line highlight">and somehow become a very special part of it. ❤️</p>
+        <p id="intro-line-3" class="intro-line">You're one of those people.</p>
+        <button id="intro-continue-btn" class="btn-secondary hidden">
+          Continue →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         💫 MAIN SURPRISE CONTENT
+         ========================================== -->
+    <div id="main-surprise" class="hidden">
+
+      <!-- 🎂 SCREEN 3: BIRTHDAY & CAKE SECTION -->
+      <section id="section-birthday" class="section-spacer">
+        <div class="birthday-header-card glass-card">
+          <span class="birthday-title-tag">Today is your day</span>
+          <h2 class="birthday-main-title">Happy Birthday, <span class="insert-bestie-name">Bestie</span> 🎂❤️</h2>
+          <p id="birthday-subtitle" class="birthday-subtitle">To the person who makes ordinary days a little more special...</p>
+        </div>
+
+        <div class="cake-card glass-card">
+          <!-- Interactive SVG Cake -->
+          <div id="birthday-cake-container" class="cake-wrapper" role="button" tabindex="0" title="Tap candles to blow out!">
+            <svg class="cake-svg" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="flameGrad" cx="50%" cy="80%" r="80%">
+                  <stop offset="0%" stop-color="#fffb91"/>
+                  <stop offset="40%" stop-color="#ff9f43"/>
+                  <stop offset="100%" stop-color="#ee5253"/>
+                </radialGradient>
+                <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fed330" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#ffa502" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="cakeTierBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#f8a5c2"/>
+                  <stop offset="100%" stop-color="#f78fb3"/>
+                </linearGradient>
+                <linearGradient id="cakeTierTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#fed6e3"/>
+                  <stop offset="100%" stop-color="#fbc2eb"/>
+                </linearGradient>
+                <linearGradient id="icingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#fff0f5"/>
+                </linearGradient>
+                <linearGradient id="plateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e3e8ee"/>
+                  <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Cake Plate / Stand -->
+              <ellipse cx="150" cy="255" rx="125" ry="18" fill="url(#plateGrad)" stroke="#dcdde1" stroke-width="2"/>
+              <ellipse cx="150" cy="250" rx="115" ry="14" fill="#ffffff"/>
+
+              <!-- Bottom Tier Cake -->
+              <rect x="55" y="175" width="190" height="70" rx="12" fill="url(#cakeTierBottom)"/>
+              <!-- Bottom Tier Icing Drippings -->
+              <path d="M55 175 C 65 195, 75 195, 85 175 C 95 198, 105 198, 115 175 C 125 196, 135 196, 145 175 C 155 198, 165 198, 175 175 C 185 196, 195 196, 205 175 C 215 198, 225 198, 235 175 L 245 175 L 245 170 L 55 170 Z" fill="url(#icingGrad)"/>
+
+              <!-- Top Tier Cake -->
+              <rect x="85" y="115" width="130" height="60" rx="10" fill="url(#cakeTierTop)"/>
+              <!-- Top Tier Icing Drippings -->
+              <path d="M85 115 C 95 132, 105 132, 115 115 C 125 135, 135 135, 145 115 C 155 134, 165 134, 175 115 C 185 135, 195 135, 205 115 L 215 115 L 215 110 L 85 110 Z" fill="url(#icingGrad)"/>
+
+              <!-- Decorative Cream Swirls & Cherries -->
+              <circle cx="95" cy="115" r="7" fill="#ff4757"/>
+              <circle cx="120" cy="115" r="7" fill="#ff6b81"/>
+              <circle cx="150" cy="115" r="8" fill="#ff4757"/>
+              <circle cx="180" cy="115" r="7" fill="#ff6b81"/>
+              <circle cx="205" cy="115" r="7" fill="#ff4757"/>
+
+              <!-- ================= CANDLE 1 (Left) ================= -->
+              <g class="candle-group" transform="translate(105, 55)">
+                <!-- Candle Stick -->
+                <rect x="0" y="24" width="8" height="36" rx="3" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="1"/>
+                <!-- Wick -->
+                <line x1="4" y1="24" x2="4" y2="18" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
+                <!-- Glow Halo -->
+                <circle class="flame-glow" cx="4" cy="10" r="18" fill="url(#glowGrad)"/>
+                <!-- Flame -->
+                <path class="flame" d="M4 2 C 7 7, 9 12, 4 18 C -1 12, 1 7, 4 2 Z" fill="url(#flameGrad)"/>
+                <!-- Smoke puff -->
+                <path class="smoke" d="M4 18 C 0 10, 8 6, 3 0" stroke="#b2bec3" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </g>
+
+              <!-- ================= CANDLE 2 (Center) ================= -->
+              <g class="candle-group" transform="translate(146, 45)">
+                <!-- Candle Stick -->
+                <rect x="0" y="24" width="8" height="46" rx="3" fill="#ff9ff3" stroke="#f368e0" stroke-width="1"/>
+                <!-- Wick -->
+                <line x1="4" y1="24" x2="4" y2="18" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
+                <!-- Glow Halo -->
+                <circle class="flame-glow" cx="4" cy="10" r="22" fill="url(#glowGrad)"/>
+                <!-- Flame -->
+                <path class="flame" d="M4 0 C 8 6, 10 12, 4 18 C -2 12, 0 6, 4 0 Z" fill="url(#flameGrad)"/>
+                <!-- Smoke puff -->
+                <path class="smoke" d="M4 18 C 1 10, 7 6, 4 0" stroke="#b2bec3" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </g>
+
+              <!-- ================= CANDLE 3 (Right) ================= -->
+              <g class="candle-group" transform="translate(187, 55)">
+                <!-- Candle Stick -->
+                <rect x="0" y="24" width="8" height="36" rx="3" fill="#54a0ff" stroke="#2e86de" stroke-width="1"/>
+                <!-- Wick -->
+                <line x1="4" y1="24" x2="4" y2="18" stroke="#2d3436" stroke-width="2" stroke-linecap="round"/>
+                <!-- Glow Halo -->
+                <circle class="flame-glow" cx="4" cy="10" r="18" fill="url(#glowGrad)"/>
+                <!-- Flame -->
+                <path class="flame" d="M4 2 C 7 7, 9 12, 4 18 C -1 12, 1 7, 4 2 Z" fill="url(#flameGrad)"/>
+                <!-- Smoke puff -->
+                <path class="smoke" d="M4 18 C 7 10, 0 6, 5 0" stroke="#b2bec3" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="cake-instruction-box">
+            <p id="cake-instruction" class="cake-instruction">
+              Tap the candles to blow them out & make a wish! 🕯️✨
+            </p>
+          </div>
+
+          <button id="cake-continue-btn" class="btn-secondary hidden" style="margin-top: 20px;">
+            Explore Our Memories ↓
+          </button>
+        </div>
+      </section>
+
+      <!-- 📸 SCREEN 4: MEMORIES SECTION -->
+      <section id="section-memories" class="section-spacer">
+        <div class="section-header-centered">
+          <span class="section-label">Moments that mean the world</span>
+          <h2 class="section-title">Our Little Memories</h2>
+        </div>
+
+        <div id="memories-container" class="memories-grid">
+          <!-- Rendered dynamically from config.js -->
+        </div>
+      </section>
+
+      <!-- 💌 SCREEN 5: HEARTFELT LETTER -->
+      <section id="section-letter" class="section-spacer">
+        <div class="letter-card glass-card">
+          <div class="letter-wax-seal">💌</div>
+          <h2 class="letter-heading">A Little Something I Wanted To Say...</h2>
+
+          <div id="letter-content-body" class="letter-content-body">
+            <!-- Rendered with typewriter reveal -->
+          </div>
+
+          <div class="letter-signature">
+            — With all my love ❤️
+          </div>
+        </div>
+      </section>
+
+      <!-- 💖 SCREEN 6: INTERACTIVE SURPRISE -->
+      <section id="section-surprise" class="section-spacer">
+        <div class="surprise-teaser-card glass-card">
+          <h3 id="surprise-teaser-title" class="surprise-teaser-title">But wait... 👀</h3>
+          
+          <button id="reveal-heart-btn" class="btn-primary-glow">
+            There's one more thing... ✨
+          </button>
+
+          <!-- Glowing Heart Revealed -->
+          <div id="glowing-heart-container" class="glowing-heart-container hidden">
+            <div class="large-beating-heart">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff758c"/>
+                    <stop offset="50%" stop-color="#ff4757"/>
+                    <stop offset="100%" stop-color="#ff6b81"/>
+                  </linearGradient>
+                </defs>
+                <path d="M50 22 C 45 8, 25 8, 15 20 C 5 32, 10 50, 50 82 C 90 50, 95 32, 85 20 C 75 8, 55 8, 50 22 Z" fill="url(#heartGrad)"/>
+              </svg>
+            </div>
+
+            <p id="heart-main-text" class="heart-main-text">
+              You are genuinely one of my favorite people. ❤️
+            </p>
+            <p id="heart-sub-text" class="heart-sub-text">
+              Never change the person you are.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🎬 SCREEN 7: FINAL BIRTHDAY SCREEN -->
+      <section id="section-final" class="section-spacer">
+        <div class="final-screen-card glass-card">
+          <h2 class="final-title">Happy Birthday, <span class="insert-bestie-name">Bestie</span> ❤️🎂</h2>
+          
+          <div class="final-lines-box">
+            <p>Keep smiling.</p>
+            <p>Keep being amazing.</p>
+            <p>And keep making memories. ✨</p>
+          </div>
+
+          <div class="final-signoff">
+            — From <span class="insert-sender-name">your bestie</span> ❤️
+          </div>
+
+          <button id="replay-btn" class="btn-secondary">
+            Replay Surprise ↻
+          </button>
+        </div>
+      </section>
+
+    </div><!-- /#main-surprise -->
+
+  </main>
+
+  <!-- ==========================================
+       📱 QR CODE GENERATOR MODAL
+       ========================================== -->
+  <div id="qr-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button id="close-qr-modal-btn" class="modal-close-btn" aria-label="Close">&times;</button>
+      <h3 class="modal-title">QR Code for Your Bestie</h3>
+      <p class="modal-desc">Generate and download a high-res card to print or share!</p>
+
+      <div class="qr-preview-frame">
+        <canvas id="qr-canvas-preview" class="qr-canvas-element"></canvas>
+        <span class="qr-scan-label">Scan Me ❤️</span>
+      </div>
+
+      <div class="qr-input-group">
+        <input type="url" id="qr-target-url" placeholder="https://your-deployed-site.vercel.app">
+        <button id="qr-update-btn">Update</button>
+      </div>
+
+      <button id="qr-download-btn" class="btn-download-qr">
+        Download Printable QR Card (PNG) 💌
+      </button>
+
+      <p style="margin-top: 14px; font-size: 0.8rem; color: #8e7992;">
+        Want a dedicated page? <a href="qr-generator.html" target="_blank" style="color: var(--primary-pink); font-weight: 600; text-decoration: underline;">Open Standalone QR Studio ↗</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="assets/js/qrcode.bundle.js"></script>
+  <script src="assets/js/confetti.browser.js"></script>
+  <script src="assets/js/canvas-effects.js"></script>
+  <script src="assets/js/audio-player.js"></script>
+  <script src="assets/js/cake-interaction.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

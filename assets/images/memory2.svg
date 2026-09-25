@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0c3fc"/>
+      <stop offset="100%" stop-color="#8ec5fc"/>
+    </linearGradient>
+    <linearGradient id="mugGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9a9e"/>
+      <stop offset="100%" stop-color="#fecfef"/>
+    </linearGradient>
+    <linearGradient id="mugGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a1c4fd"/>
+      <stop offset="100%" stop-color="#c2e9fb"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#bgGrad2)" rx="24"/>
+
+  <!-- Table wooden surface -->
+  <path d="M-10 430 Q 300 420, 610 430 L610 610 L-10 610 Z" fill="#ffffff" opacity="0.4"/>
+  <path d="M-10 460 Q 300 450, 610 460 L610 610 L-10 610 Z" fill="#ffffff" opacity="0.65"/>
+
+  <!-- Left Mug (Pink) -->
+  <g transform="translate(160, 290)">
+    <rect x="0" y="20" width="110" height="115" rx="18" fill="url(#mugGrad1)"/>
+    <!-- Mug Handle -->
+    <path d="M-2 40 C -25 40, -25 90, -2 90" stroke="#ff9a9e" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <!-- Cute heart on mug -->
+    <path d="M55 70 C 52 60, 40 60, 40 70 C 40 80, 55 90, 55 90 C 55 90, 70 80, 70 70 C 70 60, 58 60, 55 70 Z" fill="#ffffff" opacity="0.9"/>
+  </g>
+
+  <!-- Right Mug (Blue) -->
+  <g transform="translate(320, 270)">
+    <rect x="0" y="20" width="110" height="125" rx="18" fill="url(#mugGrad2)"/>
+    <!-- Mug Handle -->
+    <path d="M112 45 C 135 45, 135 95, 112 95" stroke="#a1c4fd" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <!-- Cute smile on mug -->
+    <path d="M40 75 Q 55 90, 70 75" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Rising steam intertwining into a heart -->
+  <path d="M220 280 C 210 230, 240 210, 270 180 C 290 160, 295 140, 295 120" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.75"/>
+  <path d="M370 260 C 380 220, 350 200, 320 170 C 300 150, 295 140, 295 120" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- Glowing Heart at top of steam -->
+  <path d="M295 100 C 285 80, 260 80, 260 100 C 260 120, 295 140, 295 140 C 295 140, 330 120, 330 100 C 330 80, 305 80, 295 100 Z" fill="#ff7675" opacity="0.9"/>
+
+  <!-- Ambient sparkles -->
+  <g fill="#ffffff" opacity="0.8">
+    <circle cx="120" cy="180" r="4"/>
+    <circle cx="480" cy="200" r="5"/>
+    <circle cx="430" cy="110" r="3"/>
+    <circle cx="160" cy="90" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>QR Code Studio - Bestie Birthday Surprise</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-pink: #ff6584;
+      --primary-rose: #ff758c;
+      --soft-lavender: #b197fc;
+      --wine-dark: #3e204a;
+      --text-muted: #7d6b85;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: linear-gradient(135deg, #ffeff3 0%, #f3e7fc 50%, #e6f0ff 100%);
+      min-height: 100vh;
+      color: var(--wine-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-card {
+      width: 100%;
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      padding: 28px 20px;
+      box-shadow: 0 10px 30px rgba(200, 150, 190, 0.15);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary-pink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--wine-dark);
+      margin-bottom: 8px;
+    }
+
+    .header-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Live Preview Card */
+    .preview-card {
+      width: 100%;
+      max-width: 380px;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 24px 24px;
+      text-align: center;
+      box-shadow: 0 16px 45px rgba(180, 120, 160, 0.2);
+      border: 1px solid rgba(255, 230, 240, 0.8);
+      position: relative;
+    }
+
+    .card-banner {
+      background: linear-gradient(135deg, #ffd1dc 0%, #e0c3fc 100%);
+      border-radius: 18px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-bestie-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--wine-dark);
+    }
+
+    .card-sub {
+      font-size: 0.78rem;
+      color: #6d4b68;
+      font-weight: 500;
+    }
+
+    .qr-canvas-holder {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 18px;
+      display: inline-block;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      margin-bottom: 14px;
+    }
+
+    #qr-canvas {
+      display: block;
+      max-width: 240px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .scan-me-text {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ff4d6d;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .scan-subtext {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* Controls */
+    .controls-card {
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 10px 30px rgba(200, 150, 190, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--wine-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(200, 160, 200, 0.5);
+      font-size: 0.95rem;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .input-box:focus {
+      border-color: var(--primary-pink);
+      box-shadow: 0 0 0 3px rgba(255, 101, 132, 0.15);
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 117, 140, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 117, 140, 0.5);
+    }
+
+    .deploy-tip-box {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 0.88rem;
+      color: #55445d;
+      line-height: 1.5;
+    }
+
+    .deploy-tip-box strong {
+      color: var(--wine-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header-card">
+      <a href="index.html" class="back-link">← Return to Surprise</a>
+      <h1 class="header-title">QR Code Studio 📱✨</h1>
+      <p class="header-desc">Generate a gorgeous, high-contrast scannable QR card for your deployed website.</p>
+    </div>
+
+    <!-- Live Preview Polaroid Card -->
+    <div class="preview-card" id="polaroid-card">
+      <div class="card-banner">
+        <div class="card-bestie-title">For My Bestie <span id="card-name">Alex</span> ✨</div>
+        <div class="card-sub">A digital birthday surprise made just for you</div>
+      </div>
+
+      <div class="qr-canvas-holder">
+        <canvas id="qr-canvas"></canvas>
+      </div>
+
+      <span class="scan-me-text">Scan Me ❤️</span>
+      <p class="scan-subtext">Point your phone camera here to open your surprise</p>
+      <div style="font-size: 1.2rem;">🎂 ✨ 🎁</div>
+    </div>
+
+    <!-- URL Input & Download Actions -->
+    <div class="controls-card">
+      <div>
+        <label class="control-label" for="url-input">Deployed Website URL:</label>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+          Replace with your live URL (e.g., Vercel, Netlify, or GitHub Pages)
+        </p>
+        <input type="url" id="url-input" class="input-box" placeholder="https://my-bestie-birthday.vercel.app">
+      </div>
+
+      <button id="download-qr-btn" class="btn-action">
+        Download Printable QR Card (PNG) 💌
+      </button>
+
+      <div class="deploy-tip-box">
+        <strong>💡 Deployment Quick Tip:</strong>
+        <p style="margin-top: 4px;">
+          Deploy this folder for free on <strong>Netlify Drop</strong> (just drag & drop this folder onto netlify.com/drop) or push to <strong>GitHub Pages</strong> / <strong>Vercel</strong>. Then paste your URL above to download the scannable card!
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="config.js"></script>
+  <script src="assets/js/qrcode.bundle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const config = window.SURPRISE_CONFIG || {};
+      const bestieName = config.bestieName || "Alex";
+      document.getElementById('card-name').textContent = bestieName;
+
+      const urlInput = document.getElementById('url-input');
+      const qrCanvas = document.getElementById('qr-canvas');
+      const downloadBtn = document.getElementById('download-qr-btn');
+
+      // Default URL: use current location if not on localhost/file
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+      const initialUrl = isLocal ? "https://my-bestie-birthday.vercel.app" : window.location.href;
+      urlInput.value = initialUrl;
+
+      function renderQR(url) {
+        if (typeof QRCode !== 'undefined' && QRCode.toCanvas) {
+          QRCode.toCanvas(qrCanvas, url || initialUrl, {
+            width: 240,
+            margin: 2,
+            color: {
+              dark: '#3e204a', // deep plum for flawless contrast & scannability
+              light: '#ffffff'
+            },
+            errorCorrectionLevel: 'H'
+          }, (err) => {
+            if (err) console.error(err);
+          });
+        }
+      }
+
+      renderQR(urlInput.value);
+
+      urlInput.addEventListener('input', () => {
+        renderQR(urlInput.value);
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        // Create high-res 600x780 canvas
+        const exportCanvas = document.createElement('canvas');
+        exportCanvas.width = 600;
+        exportCanvas.height = 780;
+        const ctx = exportCanvas.getContext('2d');
+
+        // White card background
+        ctx.fillStyle = '#ffffff';
+        ctx.roundRect(20, 20, 560, 740, 24);
+        ctx.fill();
+
+        // Banner header
+        const grad = ctx.createLinearGradient(20, 20, 580, 160);
+        grad.addColorStop(0, '#ffd1dc');
+        grad.addColorStop(1, '#e0c3fc');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.roundRect(20, 20, 560, 130, [24, 24, 0, 0]);
+        ctx.fill();
+
+        ctx.fillStyle = '#3e204a';
+        ctx.font = 'bold 28px "Playfair Display", Georgia, serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(`For My Bestie ${bestieName} ✨`, 300, 75);
+
+        ctx.font = '500 16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = '#6d4b68';
+        ctx.fillText('A digital birthday surprise made just for you', 300, 108);
+
+        // Draw QR
+        ctx.drawImage(qrCanvas, 130, 190, 340, 340);
+
+        // "Scan Me ❤️"
+        ctx.fillStyle = '#ff4d6d';
+        ctx.font = 'bold 36px "Playfair Display", Georgia, serif';
+        ctx.fillText('Scan Me ❤️', 300, 600);
+
+        ctx.fillStyle = '#7d6b85';
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Point your phone camera here to open your surprise', 300, 640);
+
+        ctx.font = '22px sans-serif';
+        ctx.fillText('🎂 ✨ 🎁', 300, 690);
+
+        const a = document.createElement('a');
+        a.download = `Birthday-Surprise-QR-${bestieName}.png`;
+        a.href = exportCanvas.toDataURL('image/png');
+        a.click();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nightSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c3e50"/>
+      <stop offset="60%" stop-color="#4a3e6d"/>
+      <stop offset="100%" stop-color="#7b4397"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8dc" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#ffeaa7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffeaa7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#nightSky)" rx="24"/>
+
+  <!-- Crescent Moon with glow -->
+  <circle cx="450" cy="140" r="70" fill="url(#moonGlow)"/>
+  <path d="M450 85 C 475 85, 495 105, 495 130 C 495 155, 475 175, 450 175 C 465 165, 475 150, 475 130 C 475 110, 465 95, 450 85 Z" fill="#ffeaa7"/>
+
+  <!-- Shooting Star -->
+  <path d="M120 100 L 260 170" stroke="url(#moonGlow)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="260" cy="170" r="4" fill="#ffffff"/>
+
+  <!-- Stars grid -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="100" cy="200" r="3"/>
+    <circle cx="160" cy="280" r="2"/>
+    <circle cx="280" cy="120" r="4"/>
+    <circle cx="340" cy="230" r="3"/>
+    <circle cx="500" cy="280" r="2.5"/>
+    <circle cx="220" cy="70" r="2"/>
+    <circle cx="380" cy="90" r="3"/>
+    <circle cx="80" cy="340" r="2"/>
+  </g>
+
+  <!-- Rolling hills -->
+  <path d="M-20 480 Q 200 400, 620 470 L620 620 L-20 620 Z" fill="#201b3d" opacity="0.8"/>
+  <path d="M-20 520 Q 350 450, 620 530 L620 620 L-20 620 Z" fill="#15122b"/>
+
+  <!-- Cozy tent / lantern -->
+  <g transform="translate(240, 430)">
+    <!-- Little picnic blanket -->
+    <ellipse cx="60" cy="80" rx="90" ry="25" fill="#f8a5c2" opacity="0.9"/>
+    <!-- Glowing Lantern -->
+    <circle cx="60" cy="65" r="16" fill="#ffeaa7" opacity="0.9"/>
+    <circle cx="60" cy="65" r="32" fill="#ffeaa7" opacity="0.35"/>
+    <rect x="54" y="55" width="12" height="20" rx="3" fill="#fdcb6e"/>
+  </g>
+</svg>
