@@ -40,12 +40,100 @@
   <main class="app-container">
 
     <!-- ===================================================
-         🌌 SCREEN 1: INITIAL SCREEN (DARK VOID & SINGLE STAR)
+         🌌 SCREEN 1: INITIAL SCREEN (DARK VOID & CUTE WELCOME CAT)
          =================================================== -->
     <section id="screen-initial-void" class="screen-initial-void">
-      <div class="single-star-container">
-        <div class="star-halo-ring"></div>
-        <div class="center-glowing-star">⭐</div>
+      <!-- 🐱 Cute Welcome Cat Animation -->
+      <div class="welcome-cat-wrapper" id="welcome-cat-box" title="Tap the cat!">
+        <div class="cat-speech-bubble">
+          <span>Meow~ Welcome Manvi! 🐾✨</span>
+        </div>
+        <div class="cat-svg-container">
+          <svg class="welcome-cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="starGlowYellow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fffb91" stop-opacity="1"/>
+                <stop offset="50%" stop-color="#ffd32a" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#ffa502" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="catBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#fdf4ea"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Fluffy Tail -->
+            <path class="cat-tail" d="M 145 160 C 180 155, 195 125, 185 105 C 178 90, 162 95, 168 112 C 172 122, 160 145, 135 155 Z" fill="#fceadc"/>
+
+            <!-- Chubby Cat Body -->
+            <ellipse cx="100" cy="145" rx="55" ry="45" fill="url(#catBodyGrad)"/>
+            <!-- Cute Back Paws -->
+            <ellipse cx="60" cy="182" rx="16" ry="10" fill="#f8dfcf"/>
+            <ellipse cx="140" cy="182" rx="16" ry="10" fill="#f8dfcf"/>
+
+            <!-- Cat Head -->
+            <ellipse class="cat-head" cx="100" cy="95" rx="50" ry="42" fill="url(#catBodyGrad)"/>
+
+            <!-- Left Ear -->
+            <g class="cat-ear cat-ear-left">
+              <polygon points="62,65 52,25 90,48" fill="#fdf4ea"/>
+              <polygon points="65,60 58,34 85,50" fill="#ffb8b8"/>
+            </g>
+
+            <!-- Right Ear -->
+            <g class="cat-ear cat-ear-right">
+              <polygon points="138,65 148,25 110,48" fill="#fdf4ea"/>
+              <polygon points="135,60 142,34 115,50" fill="#ffb8b8"/>
+            </g>
+
+            <!-- Cute Mini Party Hat on Left Ear -->
+            <polygon points="56,36 38,-2 74,22" fill="#ff758c"/>
+            <circle cx="38" cy="-2" r="5" fill="#ffd32a"/>
+            <circle cx="56" cy="18" r="2" fill="#ffffff"/>
+
+            <!-- Rosy Blush Cheeks -->
+            <ellipse cx="72" cy="106" rx="9" ry="5" fill="#ff758c" opacity="0.6"/>
+            <ellipse cx="128" cy="106" rx="9" ry="5" fill="#ff758c" opacity="0.6"/>
+
+            <!-- Cute Big Anime Eyes (Blinking Animation) -->
+            <g class="cat-eyes-group">
+              <!-- Left Eye -->
+              <ellipse class="cat-eye" cx="78" cy="94" rx="7" ry="8" fill="#2d1345"/>
+              <circle cx="76" cy="91" r="2.8" fill="#ffffff"/>
+              <circle cx="81" cy="97" r="1.3" fill="#ffffff"/>
+
+              <!-- Right Eye -->
+              <ellipse class="cat-eye" cx="122" cy="94" rx="7" ry="8" fill="#2d1345"/>
+              <circle cx="120" cy="91" r="2.8" fill="#ffffff"/>
+              <circle cx="125" cy="97" r="1.3" fill="#ffffff"/>
+            </g>
+
+            <!-- Cute Nose & Mouth -->
+            <polygon points="97,104 103,104 100,108" fill="#ff758c"/>
+            <path d="M 94 110 Q 100 114, 100 110 Q 100 114, 106 110" stroke="#7d5377" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+            <!-- Whiskers -->
+            <line x1="58" y1="102" x2="35" y2="98" stroke="#cca5bc" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="58" y1="108" x2="33" y2="112" stroke="#cca5bc" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="142" y1="102" x2="165" y2="98" stroke="#cca5bc" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="142" y1="108" x2="167" y2="112" stroke="#cca5bc" stroke-width="1.8" stroke-linecap="round"/>
+
+            <!-- Glowing Star Held by Kitten -->
+            <g class="held-star-glow" transform="translate(100, 142)">
+              <circle cx="0" cy="0" r="28" fill="url(#starGlowYellow)"/>
+              <path class="glowing-held-star" d="M 0 -16 L 4 -4 L 16 -4 L 7 4 L 11 16 L 0 9 L -11 16 L -7 4 L -16 -4 L -4 -4 Z" fill="#ffd32a" stroke="#fff8dc" stroke-width="1.5"/>
+            </g>
+
+            <!-- Left Front Paw resting on star -->
+            <ellipse cx="82" cy="142" rx="10" ry="8" fill="#ffffff" stroke="#f1dfd0" stroke-width="1.5"/>
+
+            <!-- Right Waving Paw -->
+            <g class="cat-paw-wave">
+              <ellipse cx="124" cy="132" rx="10" ry="9" fill="#ffffff" stroke="#f1dfd0" stroke-width="1.5"/>
+              <ellipse cx="124" cy="132" rx="4" ry="3" fill="#ffb8b8"/>
+            </g>
+          </svg>
+        </div>
       </div>
 
       <div class="initial-text-box">

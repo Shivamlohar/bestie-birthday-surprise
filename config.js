@@ -117,7 +117,8 @@ window.SURPRISE_CONFIG = {
       "You're one of those people.",
       "I hope this birthday gives you at least a little bit of the happiness you've given to the people around you.",
       "Keep smiling. Keep being yourself. And never forget how special you are.",
-      "Happy Birthday, Manvi. ❤️"
+      "Happy Birthday, Manvi. ❤️",
+      "Love you so much, Bestie! Always & forever ❤️✨"
     ],
     signOff: "— From your bestie, always."
   },

@@ -63,6 +63,25 @@ function setupInitialScreen(config) {
     if (line2) line2.classList.add('visible');
   }, 2400);
 
+  // Tap the cat for cute purr reaction & heart sparkles
+  const catBox = document.getElementById('welcome-cat-box');
+  if (catBox) {
+    catBox.addEventListener('click', () => {
+      const bubble = catBox.querySelector('.cat-speech-bubble span');
+      if (bubble) {
+        bubble.textContent = "Purr~ Love you Manvi! 💖🐾";
+      }
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 25,
+          spread: 50,
+          origin: { y: 0.3 },
+          colors: ['#ff758c', '#ffd32a', '#c4b5fd']
+        });
+      }
+    });
+  }
+
   // Button appears with glowing animation
   setTimeout(() => {
     if (beginBtn) {
@@ -303,6 +322,9 @@ function setupChapterLetter(config) {
     config.letter.paragraphs.forEach(p => {
       const pEl = document.createElement('p');
       pEl.textContent = p;
+      if (p.includes("Love you")) {
+        pEl.className = "letter-love-highlight";
+      }
       paragraphsArea.appendChild(pEl);
     });
   }

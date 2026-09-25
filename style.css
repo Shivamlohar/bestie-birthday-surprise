@@ -197,29 +197,129 @@ body {
   padding: 24px;
 }
 
-.single-star-container {
+/* 🐱 CUTE WELCOME CAT STYLES & ANIMATIONS */
+.welcome-cat-wrapper {
   position: relative;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 36px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
+  animation: floatCat 3.5s ease-in-out infinite;
+  cursor: pointer;
+  user-select: none;
 }
 
-.center-glowing-star {
-  font-size: 2.8rem;
-  color: var(--star-gold);
-  filter: drop-shadow(0 0 25px rgba(255, 211, 42, 0.85));
-  animation: starPulse 2.8s infinite ease-in-out;
+.cat-speech-bubble {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  color: #241442;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 18px rgba(255, 117, 140, 0.35);
+  border: 1px solid rgba(255, 200, 220, 0.9);
+  animation: bubblePop 2.5s ease-in-out infinite alternate;
 }
 
-.star-halo-ring {
+.cat-speech-bubble::after {
+  content: "";
   position: absolute;
-  inset: -15px;
-  border-radius: 50%;
-  border: 1px dashed rgba(255, 211, 42, 0.35);
-  animation: rotateRing 14s linear infinite;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, 0.95);
+}
+
+.cat-svg-container {
+  width: 170px;
+  height: 170px;
+  position: relative;
+  filter: drop-shadow(0 10px 24px rgba(255, 117, 140, 0.25));
+  transition: transform 0.25s ease;
+}
+
+.welcome-cat-wrapper:active .cat-svg-container {
+  transform: scale(0.95);
+}
+
+.welcome-cat-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Cat animations */
+.cat-tail {
+  transform-origin: 145px 160px;
+  animation: tailSwish 2.8s ease-in-out infinite alternate;
+}
+
+.cat-ear-left {
+  transform-origin: 70px 60px;
+  animation: earWiggleLeft 4.5s ease-in-out infinite;
+}
+
+.cat-ear-right {
+  transform-origin: 130px 60px;
+  animation: earWiggleRight 4.5s ease-in-out infinite;
+}
+
+.cat-paw-wave {
+  transform-origin: 124px 132px;
+  animation: pawWave 1.3s ease-in-out infinite alternate;
+}
+
+.cat-eye {
+  transform-origin: center;
+  animation: catBlink 3.8s infinite;
+}
+
+.held-star-glow {
+  transform-origin: 100px 142px;
+  animation: starPulse 2.4s infinite ease-in-out;
+}
+
+@keyframes floatCat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes bubblePop {
+  0% { transform: scale(0.98); }
+  100% { transform: scale(1.04); }
+}
+
+@keyframes tailSwish {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(18deg); }
+}
+
+@keyframes earWiggleLeft {
+  0%, 85%, 100% { transform: rotate(0deg); }
+  90% { transform: rotate(-8deg); }
+  95% { transform: rotate(4deg); }
+}
+
+@keyframes earWiggleRight {
+  0%, 85%, 100% { transform: rotate(0deg); }
+  90% { transform: rotate(8deg); }
+  95% { transform: rotate(-4deg); }
+}
+
+@keyframes pawWave {
+  0% { transform: rotate(-10deg) translateY(0); }
+  100% { transform: rotate(22deg) translateY(-4px); }
+}
+
+@keyframes catBlink {
+  0%, 94%, 98%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.1); }
 }
 
 .initial-text-box {
@@ -802,6 +902,20 @@ body {
   font-size: 0.98rem;
   line-height: 1.7;
   color: #432e57;
+}
+
+.letter-love-highlight {
+  font-family: var(--font-serif);
+  font-size: 1.25rem !important;
+  font-weight: 700;
+  color: #ff4757 !important;
+  text-shadow: 0 0 12px rgba(255, 71, 87, 0.25);
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: rgba(255, 240, 243, 0.85);
+  border-radius: 12px;
+  border-left: 3px solid #ff4757;
+  display: inline-block;
 }
 
 .letter-signoff {
