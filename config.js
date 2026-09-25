@@ -1,117 +1,138 @@
 /**
  * ====================================================================
- * 🎂 BESTIE BIRTHDAY SURPRISE - CONFIGURATION FILE
+ * 🌌 "A LITTLE UNIVERSE MADE FOR YOU ✨" - CONFIGURATION
+ * Dedicated to: Manvi ❤️ (Birthday: 27 September)
  * ====================================================================
- * You can customize everything here! Replace names, dates, memories,
- * photos, and heartfelt words to make this unique for your bestie.
+ * Customize names, memories, chaos, letter and photos below!
  */
 
 window.SURPRISE_CONFIG = {
-  // 🌟 NAMES & BASIC INFO
-  bestieName: "Bestie",         // Change to your bestie's real name or nickname (e.g., "Sarah", "Alex", "Chloe")
-  senderName: "Your Bestie",     // Change to your name (e.g., "Emma", "Sam")
-  birthdayDate: "Special Day ✨", // e.g. "October 14th" or "Today!"
+  // 🌟 BESTIE DETAILS
+  bestieName: "Manvi",
+  senderName: "Your Bestie",
+  birthdayDate: "27 September",
+  universeTitle: "A Little Universe Made For You ✨",
 
   // 🎵 BACKGROUND MUSIC
-  // Put your favorite mp3 inside assets/audio/ and name it "our-song.mp3", or provide any URL!
-  // If no audio file is provided, an elegant romantic ambient lofi synth plays automatically!
+  // Put your favorite MP3 in assets/audio/our-song.mp3 or provide an online URL.
+  // If no file exists, the ambient romantic celestial piano synth plays automatically!
   music: {
-    title: "Our Favorite Melody",
-    artist: "Special Acoustic & Piano",
-    src: "assets/audio/our-song.mp3", // path or URL to your audio file
-    autoSynthFallback: true           // plays soft soothing piano chimes if mp3 is missing
+    title: "Celestial Melody",
+    artist: "Acoustic & Piano",
+    src: "assets/audio/our-song.mp3"
   },
 
-  // 🎬 INTRO CINEMATIC LINES (Appears one by one with smooth fade/slide)
-  introLines: [
-    "Some people enter your life...",
-    "and somehow become a very special part of it. ❤️",
-    "You're one of those people."
-  ],
-
-  // 🎂 BIRTHDAY & CAKE SECTION
-  birthdayHeader: {
-    subtitle: "To the person who makes ordinary days a little more special...",
-    blowInstruction: "Tap the candles to blow them out & make a wish! 🕯️✨",
-    candlesBlownText: "Wish granted! 🎉 May all your dreams come true!"
+  // 🌌 INITIAL SCREEN (Dark Void with Single Star)
+  initialScreen: {
+    line1: "I made something for you...",
+    line2: "But you have to discover it yourself. ✨",
+    buttonText: "Begin the Journey →"
   },
 
-  // 📸 MEMORIES SECTION ("Our Little Memories")
-  // Add as many memory cards as you want!
-  // Images can be placed in assets/images/ or be online URLs (Unsplash, Imgur, etc.)
+  // ⭐ CHAPTER 1: OUR MEMORIES (Cinematic Floating Photo Cards)
   memories: [
     {
-      title: "That one unforgettable day ❤️",
-      date: "A day to remember",
-      caption: "We got completely lost, laughed until our stomachs ached, and somehow made the best memory out of complete chaos.",
+      title: "One of those moments I'll always remember ✨",
+      date: "Golden Hour Memory",
+      caption: "We got completely lost in conversation, laughed until our stomachs hurt, and somehow turned an ordinary day into a core memory.",
       image: "assets/images/memory1.svg",
-      tag: "Pure Joy ✨",
-      rotation: -2 // aesthetic tilt angle in degrees
+      tag: "Unforgettable ❤️"
     },
     {
-      title: "That stupid conversation we still laugh about 😂",
-      date: "Late night talks",
-      caption: "It started as a 5-minute check-in and turned into a 3-hour marathon of ridiculous inside jokes and deep life thoughts.",
+      title: "Why were we like this? 😂",
+      date: "Late Night Talks",
+      caption: "What started as a quick 5-minute call somehow escalated into a 3-hour marathon of ridiculous inside jokes and deep life philosophies.",
       image: "assets/images/memory2.svg",
-      tag: "Core Memory 🌙",
-      rotation: 1.5
+      tag: "Pure Chaos 🌙"
     },
     {
-      title: "One of my favorite memories with you ✨",
-      date: "The golden hour",
-      caption: "No big plans, just good coffee, comfortable silence, and having each other's back through everything.",
+      title: "This memory still makes me smile 🌸",
+      date: "A Quiet Afternoon",
+      caption: "No big plans, just good coffee, comfortable silence, and knowing you've always got my back no matter what.",
       image: "assets/images/memory3.svg",
-      tag: "Always & Forever ☕",
-      rotation: -1
+      tag: "Priceless ☕"
     },
     {
-      title: "Through every high and low 🌸",
-      date: "Every single day",
-      caption: "Whenever things felt heavy, one text from you was always enough to make the world feel lighter again.",
+      title: "Through every high and low 💖",
+      date: "Every Single Day",
+      caption: "Whenever things felt heavy, one text from you was always enough to make everything feel okay again.",
       image: "assets/images/memory4.svg",
-      tag: "Unconditional 💖",
-      rotation: 2
+      tag: "Always & Forever ✨"
     }
   ],
 
-  // 💌 HEARTFELT LETTER
-  // This renders like an intimate handwritten letter with a gentle typewriter reveal.
-  letter: {
-    heading: "A Little Something I Wanted To Say...",
-    paragraphs: [
-      "You've become one of those people whose presence just makes things feel better.",
-      "Thank you for all the laughs, the random conversations, the stupid jokes, the unforgettable memories, and simply for being you.",
-      "I don't know what the future holds, but I genuinely hope there are many more memories, laughs and crazy moments waiting for us.",
-      "Happy Birthday, Bestie. ❤️",
-      "You deserve all the happiness in the world."
+  // ⭐ CHAPTER 2: SOMETHING I NEVER SAY (Sentence-by-Sentence Heartbeat Reveal)
+  neverSayLines: [
+    "Sometimes I don't say it...",
+    "but your presence genuinely makes things better.",
+    "Even ordinary conversations become memories.",
+    "And I'm really glad that you're a part of my life.",
+    "That's something I never want you to forget. ❤️"
+  ],
+
+  // ⭐ CHAPTER 3: OUR CHAOS (Fun & Playful Moments)
+  chaos: {
+    title: "Proof that we're slightly crazy 😂",
+    subtitle: "A collection of questionable life decisions and pure chaos.",
+    cards: [
+      {
+        quote: "Normal people would have stopped here.",
+        subtext: "We clearly didn't. Not even for a second."
+      },
+      {
+        quote: "Don't ask.",
+        subtext: "There is literally no rational explanation for what happened."
+      },
+      {
+        quote: "Why do we have this photo? 😂",
+        subtext: "Evidence that should probably be deleted, but is too funny to lose."
+      },
+      {
+        quote: "Zero brain cells were used in the making of this memory.",
+        subtext: "10/10 would do it all over again."
+      }
+    ],
+    // Reverse-psychology prank button messages
+    prankButtons: [
+      {
+        label: "Don't Click This 🛑",
+        response: "See? I knew you would click it 😂"
+      },
+      {
+        label: "Seriously, Don't Click 🙈",
+        response: "Okay, you're impossible. Never change! 💖"
+      }
     ]
   },
 
-  // 💖 THE INTERACTIVE SURPRISE
-  // Triggered when she taps "There's one more thing..."
-  interactiveSurprise: {
-    teaserTitle: "But wait... 👀",
-    buttonText: "There's one more thing...",
-    insideHeart: "You are genuinely one of my favorite people. ❤️",
-    subText: "Never change the person you are."
+  // ⭐ CHAPTER 4: SECRET LETTER (3D Opening Envelope)
+  letter: {
+    envelopeTitle: "There's something here for you. 💌",
+    openButtonText: "Open It ✨",
+    salutation: "Dear Manvi,",
+    paragraphs: [
+      "I don't know if I say this enough, but I'm genuinely grateful that I met you.",
+      "Thank you for the random conversations, the stupid jokes, the unforgettable moments, and all the little things that somehow became memories.",
+      "Some people become important without even trying.",
+      "You're one of those people.",
+      "I hope this birthday gives you at least a little bit of the happiness you've given to the people around you.",
+      "Keep smiling. Keep being yourself. And never forget how special you are.",
+      "Happy Birthday, Manvi. ❤️"
+    ],
+    signOff: "— From your bestie, always."
   },
 
-  // 🎬 FINAL SCREEN
-  finalScreen: {
-    title: "Happy Birthday,",
-    lines: [
+  // ⭐ CHAPTER 5: ONE LAST SURPRISE (Birthday Celebration & Cake)
+  finalSurprise: {
+    heading: "Happy Birthday, Manvi! 🎂❤️",
+    subheading: "September 27th • A day as special as you are ✨",
+    blowInstruction: "Tap the candles to blow them out & make a 27th September wish! 🕯️✨",
+    wishGrantedText: "Wish granted! 🎉 May all your dreams and wishes come true this year!",
+    finalLines: [
       "Keep smiling.",
       "Keep being amazing.",
-      "And keep making memories. ✨"
+      "And keep making memories with me. ✨"
     ],
-    signOff: "— From your bestie ❤️",
-    replayButton: "Replay Surprise ↻"
-  },
-
-  // 📱 QR CODE SETTINGS
-  qr: {
-    cardTitle: "A Surprise For You",
-    scanText: "Scan Me ❤️",
-    subText: "Made with love for your special day"
+    signOff: "— From your bestie ❤️"
   }
 };

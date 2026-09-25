@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 820" width="600" height="820">
   <defs>
-    <!-- Soft background card gradient / shadow -->
     <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
       <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#cca8c0" flood-opacity="0.35"/>
     </filter>
 
     <linearGradient id="bannerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fed6e3"/>
-      <stop offset="50%" stop-color="#fbc2eb"/>
-      <stop offset="100%" stop-color="#a6c1ee"/>
+      <stop offset="0%" stop-color="#120b26"/>
+      <stop offset="50%" stop-color="#2a1452"/>
+      <stop offset="100%" stop-color="#3d1b6d"/>
     </linearGradient>
 
     <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -19,8 +18,8 @@
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
-      .banner-title { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: bold; fill: #3e204a; text-anchor: middle; }
-      .banner-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 500; fill: #6d4b68; text-anchor: middle; }
+      .banner-title { font-family: 'Playfair Display', Georgia, serif; font-size: 32px; font-weight: bold; fill: #ffd32a; text-anchor: middle; }
+      .banner-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 500; fill: #c4b5fd; text-anchor: middle; }
       .scan-title { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: bold; fill: #ff4757; text-anchor: middle; }
       .scan-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; fill: #7d6b85; text-anchor: middle; }
       .footer-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; fill: #a595aa; text-anchor: middle; }
@@ -28,22 +27,24 @@
   </defs>
 
   <!-- Background Canvas -->
-  <rect width="600" height="820" fill="#fdf4f7"/>
+  <rect width="600" height="820" fill="#070614"/>
 
   <!-- Printable Polaroid White Card with Shadow -->
   <rect x="25" y="25" width="550" height="770" rx="32" fill="#ffffff" filter="url(#cardShadow)"/>
-  <rect x="25" y="25" width="550" height="770" rx="32" fill="none" stroke="#fce4ec" stroke-width="2"/>
+  <rect x="25" y="25" width="550" height="770" rx="32" fill="none" stroke="#f1e6f5" stroke-width="2"/>
 
-  <!-- Top Pastel Banner -->
+  <!-- Top Cosmic Banner -->
   <path d="M 25 57 Q 25 25, 57 25 L 543 25 Q 575 25, 575 57 L 575 160 L 25 160 Z" fill="url(#bannerGrad)"/>
 
-  <!-- Floating cute decorative hearts on banner -->
-  <path d="M 90 70 C 85 58, 65 58, 65 72 C 65 85, 90 100, 90 100 C 90 100, 115 85, 115 72 C 115 58, 95 58, 90 70 Z" fill="#ffffff" opacity="0.65"/>
-  <path d="M 510 65 C 505 53, 485 53, 485 67 C 485 80, 510 95, 510 95 C 510 95, 535 80, 535 67 C 535 53, 515 53, 510 65 Z" fill="#ffffff" opacity="0.65"/>
+  <!-- Tiny Gold Stars on Banner -->
+  <text x="75" y="70" font-size="20" fill="#ffd32a">✨</text>
+  <text x="525" y="70" font-size="20" fill="#ffd32a">✨</text>
+  <text x="120" y="130" font-size="16" fill="#c4b5fd">⭐</text>
+  <text x="480" y="130" font-size="16" fill="#c4b5fd">⭐</text>
 
   <!-- Banner Text -->
-  <text x="300" y="85" class="banner-title">For My Bestie Bestie ✨</text>
-  <text x="300" y="122" class="banner-sub">A digital birthday surprise made just for you</text>
+  <text x="300" y="85" class="banner-title">For My Bestie Manvi ✨</text>
+  <text x="300" y="122" class="banner-sub">A Little Universe Made For You • 27 September</text>
 
   <!-- QR Frame Outer Container -->
   <rect x="95" y="195" width="410" height="410" rx="24" fill="#faf5f8" stroke="#f1d4e4" stroke-width="2"/>
@@ -54,11 +55,11 @@
   <!-- Embedded QR Code SVG -->
   <g transform="translate(130, 230)">
     <svg width="340" height="340" viewBox="0 0 43 43">
-      <path fill="#ffffff" d="M0 0h43v43H0z"/><path stroke="#3e204a" d="M1 1.5h7m2 0h1m2 0h4m2 0h1m2 0h1m2 0h1m1 0h1m2 0h2m3 0h7M1 2.5h1m5 0h1m3 0h5m1 0h1m3 0h5m4 0h4m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m6 0h1m2 0h1m1 0h1m6 0h1m6 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h4m1 0h1m1 0h3m4 0h2m2 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h2m1 0h4m1 0h2m1 0h1m1 0h4m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m2 0h1m1 0h1m4 0h3m3 0h3m5 0h1m3 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 8.5h3m1 0h6m1 0h2m1 0h1m4 0h1M4 9.5h2m1 0h2m2 0h3m2 0h2m5 0h2m4 0h2m1 0h2m4 0h2M1 10.5h3m1 0h2m1 0h1m3 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h3m3 0h2M1 11.5h1m5 0h3m2 0h1m2 0h1m1 0h1m2 0h5m1 0h1m1 0h4m2 0h1m1 0h2m1 0h2M1 12.5h1m3 0h2m3 0h2m1 0h1m1 0h1m2 0h2m1 0h3m1 0h3m1 0h5m3 0h2m1 0h2M1 13.5h1m2 0h5m1 0h4m1 0h3m2 0h1m3 0h1m1 0h1m1 0h1m6 0h2m3 0h1M4 14.5h2m3 0h1m2 0h4m5 0h1m2 0h3m3 0h1m3 0h2m1 0h1m3 0h1M1 15.5h5m1 0h1m5 0h2m1 0h3m1 0h2m4 0h1m1 0h1m2 0h5m3 0h1m1 0h1M1 16.5h3m4 0h3m1 0h3m2 0h6m1 0h1m2 0h1m1 0h1m3 0h2m2 0h4M1 17.5h5m1 0h1m2 0h3m4 0h2m1 0h2m1 0h3m2 0h1m3 0h3m6 0h1M5 18.5h1m3 0h1m1 0h1m7 0h1m2 0h1m4 0h2m1 0h1m1 0h3m2 0h1M1 19.5h1m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m1 0h1m2 0h2m3 0h5m1 0h1m3 0h3m2 0h1M5 20.5h2m1 0h1m3 0h1m1 0h1m4 0h1m2 0h3m7 0h1m2 0h1m1 0h1m1 0h1M1 21.5h3m1 0h3m3 0h2m2 0h2m1 0h1m1 0h2m7 0h3m1 0h1m1 0h2m1 0h2M1 22.5h1m1 0h1m1 0h1m2 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h4m2 0h1m1 0h3m3 0h3M1 23.5h1m1 0h5m4 0h2m2 0h2m2 0h1m4 0h2m1 0h1m1 0h2m2 0h2m1 0h3M2 24.5h1m1 0h1m3 0h2m1 0h1m3 0h1m2 0h1m1 0h6m1 0h2m1 0h2m2 0h2m1 0h2m1 0h1M4 25.5h1m2 0h1m3 0h3m1 0h2m1 0h1m5 0h2m3 0h1m3 0h1m1 0h1m5 0h1M1 26.5h1m3 0h2m2 0h1m2 0h1m3 0h2m3 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h3M1 27.5h1m1 0h1m3 0h1m3 0h1m2 0h3m1 0h1m1 0h2m2 0h1m3 0h2m2 0h5m1 0h1m2 0h1M4 28.5h1m3 0h1m1 0h1m2 0h1m5 0h4m3 0h1m1 0h1m3 0h1m2 0h1m1 0h5M1 29.5h1m1 0h3m1 0h3m1 0h1m5 0h1m3 0h1m1 0h2m3 0h1m3 0h2m4 0h1m1 0h1M1 30.5h6m2 0h1m1 0h2m1 0h8m2 0h4m2 0h5m2 0h1m1 0h1M1 31.5h2m2 0h3m1 0h1m2 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h2m3 0h1m1 0h4m2 0h5M1 32.5h3m1 0h1m4 0h6m10 0h4m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3M1 33.5h4m2 0h2m2 0h1m2 0h1m1 0h4m2 0h4m3 0h2m1 0h8M9 34.5h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h1m1 0h1m2 0h1m3 0h3M1 35.5h7m1 0h1m2 0h5m1 0h2m1 0h2m1 0h1m3 0h1m3 0h2m1 0h1m1 0h3M1 36.5h1m5 0h1m3 0h3m2 0h1m1 0h1m1 0h2m3 0h3m2 0h1m2 0h1m3 0h2m1 0h2M1 37.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h7m1 0h10M1 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h4m1 0h2m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h4M1 39.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m1 0h8m2 0h2m1 0h1m2 0h1m1 0h2m1 0h3M1 40.5h1m5 0h1m3 0h4m2 0h3m1 0h1m2 0h2m1 0h3m4 0h2m1 0h3m1 0h1M1 41.5h7m2 0h2m2 0h1m2 0h4m2 0h1m1 0h5m2 0h2m1 0h1m1 0h2"/>
+      <path fill="#ffffff" d="M0 0h43v43H0z"/><path stroke="#1c0e35" d="M1 1.5h7m2 0h1m2 0h4m2 0h1m2 0h1m2 0h1m1 0h1m2 0h2m3 0h7M1 2.5h1m5 0h1m3 0h5m1 0h1m3 0h5m4 0h4m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m6 0h1m2 0h1m1 0h1m6 0h1m6 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h4m1 0h1m1 0h3m4 0h2m2 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h2m1 0h4m1 0h2m1 0h1m1 0h4m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m2 0h1m1 0h1m4 0h3m3 0h3m5 0h1m3 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 8.5h3m1 0h6m1 0h2m1 0h1m4 0h1M4 9.5h2m1 0h2m2 0h3m2 0h2m5 0h2m4 0h2m1 0h2m4 0h2M1 10.5h3m1 0h2m1 0h1m3 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h3m3 0h2M1 11.5h1m5 0h3m2 0h1m2 0h1m1 0h1m2 0h5m1 0h1m1 0h4m2 0h1m1 0h2m1 0h2M1 12.5h1m3 0h2m3 0h2m1 0h1m1 0h1m2 0h2m1 0h3m1 0h3m1 0h5m3 0h2m1 0h2M1 13.5h1m2 0h5m1 0h4m1 0h3m2 0h1m3 0h1m1 0h1m1 0h1m6 0h2m3 0h1M4 14.5h2m3 0h1m2 0h4m5 0h1m2 0h3m3 0h1m3 0h2m1 0h1m3 0h1M1 15.5h5m1 0h1m5 0h2m1 0h3m1 0h2m4 0h1m1 0h1m2 0h5m3 0h1m1 0h1M1 16.5h3m4 0h3m1 0h3m2 0h6m1 0h1m2 0h1m1 0h1m3 0h2m2 0h4M1 17.5h5m1 0h1m2 0h3m4 0h2m1 0h2m1 0h3m2 0h1m3 0h3m6 0h1M5 18.5h1m3 0h1m1 0h1m7 0h1m2 0h1m4 0h2m1 0h1m1 0h3m2 0h1M1 19.5h1m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m1 0h1m2 0h2m3 0h5m1 0h1m3 0h3m2 0h1M5 20.5h2m1 0h1m3 0h1m1 0h1m4 0h1m2 0h3m7 0h1m2 0h1m1 0h1m1 0h1M1 21.5h3m1 0h3m3 0h2m2 0h2m1 0h1m1 0h2m7 0h3m1 0h1m1 0h2m1 0h2M1 22.5h1m1 0h1m1 0h1m2 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h4m2 0h1m1 0h3m3 0h3M1 23.5h1m1 0h5m4 0h2m2 0h2m2 0h1m4 0h2m1 0h1m1 0h2m2 0h2m1 0h3M2 24.5h1m1 0h1m3 0h2m1 0h1m3 0h1m2 0h1m1 0h6m1 0h2m1 0h2m2 0h2m1 0h2m1 0h1M4 25.5h1m2 0h1m3 0h3m1 0h2m1 0h1m5 0h2m3 0h1m3 0h1m1 0h1m5 0h1M1 26.5h1m3 0h2m2 0h1m2 0h1m3 0h2m3 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h3M1 27.5h1m1 0h1m3 0h1m3 0h1m2 0h3m1 0h1m1 0h2m2 0h1m3 0h2m2 0h5m1 0h1m2 0h1M4 28.5h1m3 0h1m1 0h1m2 0h1m5 0h4m3 0h1m1 0h1m3 0h1m2 0h1m1 0h5M1 29.5h1m1 0h3m1 0h3m1 0h1m5 0h1m3 0h1m1 0h2m3 0h1m3 0h2m4 0h1m1 0h1M1 30.5h6m2 0h1m1 0h2m1 0h8m2 0h4m2 0h5m2 0h1m1 0h1M1 31.5h2m2 0h3m1 0h1m2 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h2m3 0h1m1 0h4m2 0h5M1 32.5h3m1 0h1m4 0h6m10 0h4m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3M1 33.5h4m2 0h2m2 0h1m2 0h1m1 0h4m2 0h4m3 0h2m1 0h8M9 34.5h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h1m1 0h1m2 0h1m3 0h3M1 35.5h7m1 0h1m2 0h5m1 0h2m1 0h2m1 0h1m3 0h1m3 0h2m1 0h1m1 0h3M1 36.5h1m5 0h1m3 0h3m2 0h1m1 0h1m1 0h2m3 0h3m2 0h1m2 0h1m3 0h2m1 0h2M1 37.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h7m1 0h10M1 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h4m1 0h2m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h4M1 39.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m1 0h8m2 0h2m1 0h1m2 0h1m1 0h2m1 0h3M1 40.5h1m5 0h1m3 0h4m2 0h3m1 0h1m2 0h2m1 0h3m4 0h2m1 0h3m1 0h1M1 41.5h7m2 0h2m2 0h1m2 0h4m2 0h1m1 0h5m2 0h2m1 0h1m1 0h2"/>
     </svg>
   </g>
 
-  <!-- Center Heart Emblem (Small, non-intrusive on scannability due to Error Correction H) -->
+  <!-- Center Heart Emblem -->
   <g transform="translate(300, 400)">
     <circle cx="0" cy="0" r="24" fill="#ffffff" stroke="#ff758c" stroke-width="3"/>
     <path d="M 0 -8 C -4 -16, -16 -16, -16 -6 C -16 4, 0 16, 0 16 C 0 16, 16 4, 16 -6 C 16 -16, 4 -16, 0 -8 Z" fill="url(#heartGrad)"/>
@@ -66,9 +67,9 @@
 
   <!-- "Scan Me ❤️" Text -->
   <text x="300" y="655" class="scan-title">Scan Me ❤️</text>
-  <text x="300" y="695" class="scan-sub">Point your phone camera here to open your surprise</text>
+  <text x="300" y="695" class="scan-sub">Point your phone camera here to open Manvi's universe</text>
 
   <!-- Cute Footer Accents -->
-  <text x="300" y="742" font-size="24" text-anchor="middle">🎂 ✨ 💖 ✨ 🎁</text>
+  <text x="300" y="742" font-size="24" text-anchor="middle">🌌 🎂 ✨ 💖 ✨ 🎁</text>
   <text x="300" y="775" class="footer-sub">Open via Camera app • No install needed</text>
 </svg>

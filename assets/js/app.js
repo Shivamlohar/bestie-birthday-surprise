@@ -1,17 +1,15 @@
 /**
  * ====================================================================
- * 💫 MAIN APP ORCHESTRATOR
+ * 🌌 "A LITTLE UNIVERSE MADE FOR YOU ✨" - APP ORCHESTRATOR
+ * Dedicated to: Manvi ❤️ (27 September)
  * ====================================================================
- * Coordinates the surprise progression, memory cards rendering,
- * typewriter letter animation, interactive grand heart reveal,
- * audio player, and QR modal generator.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const config = window.SURPRISE_CONFIG || {};
 
-  // 1. Initialize Canvas Particle Engine
-  window.particleEngine = new ParticleEngine('ambient-canvas');
+  // 1. Initialize Cosmic Engine (twinkling & shooting stars)
+  window.cosmicEngine = new CosmicEngine('ambient-canvas');
 
   // 2. Initialize Audio Player
   window.audioPlayer = new RomanticAudioPlayer(config);
@@ -19,431 +17,359 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Initialize Interactive Birthday Cake
   window.cakeInteraction = new BirthdayCakeInteraction({
     onBlown: () => {
-      // Optional callback when candles are blown
+      if (window.cosmicEngine) {
+        window.cosmicEngine.launchCelebrationConfetti();
+      }
     }
   });
 
-  // 4. Populate Dynamic Config Data
-  populateConfigData(config);
+  // State Management
+  const visitedChapters = new Set();
+  const totalChaptersNeeded = 4;
 
-  // 5. Setup Step Navigation & Animations
-  setupProgressionFlow(config);
+  // 4. Setup Initial Void Screen
+  setupInitialScreen(config);
 
-  // 6. Setup QR Code Generator Modal
+  // 5. Setup Constellation Hub & Chapter Navigation
+  setupUniverseHub(config, visitedChapters, totalChaptersNeeded);
+
+  // 6. Setup Individual Chapter Handlers
+  setupChapterMemories(config);
+  setupChapterNeverSay(config);
+  setupChapterChaos(config);
+  setupChapterLetter(config);
+
+  // 7. Setup QR Code Generator
   setupQRCodeModal(config);
-
-  // 7. Setup Intersection Observer for Scroll Animations & Letter Typewriter
-  setupScrollAnimations(config);
 });
 
 /**
- * Injects user configured names, memories, and text into DOM
+ * SCREEN 1: Initial Screen (Dark Void & Glowing Star)
  */
-function populateConfigData(config) {
-  const bestieName = config.bestieName || "Bestie";
-  const senderName = config.senderName || "Your Bestie";
+function setupInitialScreen(config) {
+  const line1 = document.getElementById('initial-line-1');
+  const line2 = document.getElementById('initial-line-2');
+  const beginBtn = document.getElementById('begin-journey-btn');
+  const voidScreen = document.getElementById('screen-initial-void');
+  const universeScreen = document.getElementById('screen-universe');
 
-  // Replace all [BESTIE NAME] placeholders
-  document.querySelectorAll('.insert-bestie-name').forEach(el => {
-    el.textContent = bestieName;
-  });
+  // Line 1 fades in
+  setTimeout(() => {
+    if (line1) line1.classList.add('visible');
+  }, 400);
 
-  document.querySelectorAll('.insert-sender-name').forEach(el => {
-    el.textContent = senderName;
-  });
+  // Line 2 fades in after 2 seconds
+  setTimeout(() => {
+    if (line2) line2.classList.add('visible');
+  }, 2400);
 
-  // Birthday subtitle & instructions
-  const birthdaySub = document.getElementById('birthday-subtitle');
-  if (birthdaySub && config.birthdayHeader?.subtitle) {
-    birthdaySub.textContent = config.birthdayHeader.subtitle;
-  }
+  // Button appears with glowing animation
+  setTimeout(() => {
+    if (beginBtn) {
+      beginBtn.classList.remove('hidden');
+      beginBtn.classList.add('fade-in');
+    }
+  }, 3800);
 
-  // Populate Memories Cards
-  const memoriesContainer = document.getElementById('memories-container');
-  if (memoriesContainer && Array.isArray(config.memories)) {
-    memoriesContainer.innerHTML = '';
-    config.memories.forEach((mem, index) => {
-      const card = document.createElement('div');
-      card.className = 'memory-card glass-card';
-      const tilt = mem.rotation || (index % 2 === 0 ? -1.5 : 1.5);
-      card.style.setProperty('--card-tilt', `${tilt}deg`);
-
-      card.innerHTML = `
-        <div class="polaroid-frame">
-          <div class="polaroid-photo-wrapper">
-            <img src="${mem.image}" alt="${mem.title}" loading="lazy" class="polaroid-photo">
-            ${mem.tag ? `<span class="polaroid-badge">${mem.tag}</span>` : ''}
-          </div>
-          <div class="polaroid-caption-area">
-            <div class="polaroid-date">${mem.date || ''}</div>
-            <h3 class="polaroid-title">${mem.title}</h3>
-            <p class="polaroid-desc">${mem.caption}</p>
-          </div>
-        </div>
-      `;
-
-      // Tap card to highlight / enlarge slightly
-      card.addEventListener('click', () => {
-        card.classList.toggle('card-expanded');
-      });
-
-      memoriesContainer.appendChild(card);
-    });
-  }
-
-  // Populate Surprise Teaser
-  const surpriseTeaser = document.getElementById('surprise-teaser-title');
-  if (surpriseTeaser && config.interactiveSurprise?.teaserTitle) {
-    surpriseTeaser.textContent = config.interactiveSurprise.teaserTitle;
-  }
-  const surpriseBtn = document.getElementById('reveal-heart-btn');
-  if (surpriseBtn && config.interactiveSurprise?.buttonText) {
-    surpriseBtn.innerHTML = `${config.interactiveSurprise.buttonText} ✨`;
-  }
-  const heartMainText = document.getElementById('heart-main-text');
-  if (heartMainText && config.interactiveSurprise?.insideHeart) {
-    heartMainText.textContent = config.interactiveSurprise.insideHeart;
-  }
-  const heartSubText = document.getElementById('heart-sub-text');
-  if (heartSubText && config.interactiveSurprise?.subText) {
-    heartSubText.textContent = config.interactiveSurprise.subText;
-  }
-}
-
-/**
- * Handles the step-by-step cinematic journey
- */
-function setupProgressionFlow(config) {
-  const landingSection = document.getElementById('section-landing');
-  const introSection = document.getElementById('section-intro');
-  const mainSurprise = document.getElementById('main-surprise');
-  const startBtn = document.getElementById('start-surprise-btn');
-  const introContinueBtn = document.getElementById('intro-continue-btn');
-  const replayBtn = document.getElementById('replay-btn');
-
-  // STEP 1: Landing -> Intro
-  if (startBtn) {
-    startBtn.addEventListener('click', () => {
-      // Suggest playing music on first interaction
+  if (beginBtn) {
+    beginBtn.addEventListener('click', () => {
+      // Start ambient music on user tap
       if (window.audioPlayer && !window.audioPlayer.isPlaying) {
         window.audioPlayer.play();
       }
 
-      landingSection.classList.add('fade-out');
-      setTimeout(() => {
-        landingSection.classList.add('hidden');
-        introSection.classList.remove('hidden');
-        introSection.classList.add('fade-in');
-        startIntroSequence(config);
-      }, 600);
+      voidScreen.classList.add('hidden');
+      universeScreen.classList.remove('hidden');
+      universeScreen.classList.add('fade-in');
+      window.scrollTo({ top: 0, behavior: 'instant' });
     });
   }
+}
 
-  // STEP 2: Intro -> Birthday & Full Surprise
-  if (introContinueBtn) {
-    introContinueBtn.addEventListener('click', () => {
-      introSection.classList.add('fade-out');
-      setTimeout(() => {
-        introSection.classList.add('hidden');
-        mainSurprise.classList.remove('hidden');
-        mainSurprise.classList.add('fade-in');
+/**
+ * SCREEN 2: Constellation Star Universe Hub
+ */
+function setupUniverseHub(config, visitedChapters, totalNeeded) {
+  const progressText = document.getElementById('progress-tracker-text');
+  const star5Node = document.getElementById('star-node-5');
+  const star5Icon = document.getElementById('star-5-icon');
+  const star5Status = document.getElementById('status-star-5');
+  const star5Subtext = document.getElementById('star-5-subtext');
+
+  // Update name placeholders
+  document.querySelectorAll('.insert-bestie-name').forEach(el => {
+    el.textContent = config.bestieName || 'Manvi';
+  });
+  document.querySelectorAll('.insert-sender-name').forEach(el => {
+    el.textContent = config.senderName || 'Your Bestie';
+  });
+
+  const updateProgress = () => {
+    const count = visitedChapters.size;
+    if (progressText) {
+      progressText.textContent = `Chapters Explored: ${count}/${totalNeeded}`;
+    }
+
+    // Unlock Star 5 if 4 chapters completed!
+    if (count >= totalNeeded && star5Node) {
+      star5Node.classList.remove('locked');
+      star5Node.classList.add('unlocked');
+      if (star5Icon) star5Icon.textContent = '⭐';
+      if (star5Status) {
+        star5Status.textContent = 'Unlocked ✨';
+        star5Status.classList.add('completed');
+      }
+      if (star5Subtext) {
+        star5Subtext.textContent = 'Your final birthday surprise awaits!';
+      }
+    }
+  };
+
+  // Bind Star Clicks
+  for (let i = 1; i <= 5; i++) {
+    const starNode = document.getElementById(`star-node-${i}`);
+    if (!starNode) continue;
+
+    starNode.addEventListener('click', () => {
+      // Check Star 5 locked status
+      if (i === 5 && visitedChapters.size < totalNeeded) {
+        alert("✨ Discover the first 4 chapters in the universe to unlock your final surprise!");
+        return;
+      }
+
+      // Mark chapter visited
+      if (i <= 4) {
+        visitedChapters.add(i);
+        const statusPill = document.getElementById(`status-star-${i}`);
+        if (statusPill) {
+          statusPill.textContent = 'Explored ✓';
+          statusPill.classList.add('completed');
+        }
+        starNode.classList.add('visited');
+        updateProgress();
+      }
+
+      // Transition to Chapter View
+      document.getElementById('screen-universe').classList.add('hidden');
+      const targetView = document.getElementById(`view-chapter-${i}`);
+      if (targetView) {
+        targetView.classList.remove('hidden');
+        targetView.classList.add('fade-in');
         window.scrollTo({ top: 0, behavior: 'instant' });
 
-        // Launch opening confetti burst
-        if (typeof confetti === 'function') {
-          confetti({
-            particleCount: 50,
-            spread: 60,
-            origin: { y: 0.3 }
-          });
+        // Trigger specific chapter entry animations
+        if (i === 2) triggerNeverSaySequence();
+        if (i === 5 && typeof confetti === 'function') {
+          confetti({ particleCount: 70, spread: 80, origin: { y: 0.4 } });
         }
-      }, 600);
-    });
-  }
-
-  // STEP 3: Grand Heart Surprise Reveal
-  const revealHeartBtn = document.getElementById('reveal-heart-btn');
-  const glowingHeartContainer = document.getElementById('glowing-heart-container');
-
-  if (revealHeartBtn && glowingHeartContainer) {
-    revealHeartBtn.addEventListener('click', () => {
-      revealHeartBtn.classList.add('fade-out');
-      setTimeout(() => {
-        revealHeartBtn.classList.add('hidden');
-        glowingHeartContainer.classList.remove('hidden');
-        glowingHeartContainer.classList.add('animate-heart-bloom');
-
-        // Launch Upward Heart Fountain!
-        if (window.particleEngine) {
-          window.particleEngine.launchHeartFountain();
-          setTimeout(() => {
-            window.particleEngine.launchHeartFountain();
-          }, 800);
-        }
-
-        if (typeof confetti === 'function') {
-          confetti({
-            particleCount: 70,
-            spread: 100,
-            origin: { y: 0.7 },
-            colors: ['#ff758c', '#ff7eb3', '#fbc2eb', '#ffffff']
-          });
-        }
-      }, 400);
-    });
-  }
-
-  // STEP 4: Replay Surprise
-  if (replayBtn) {
-    replayBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        mainSurprise.classList.add('hidden');
-        introSection.classList.add('hidden');
-        landingSection.classList.remove('hidden', 'fade-out');
-        landingSection.classList.add('fade-in');
-
-        // Reset heart surprise button
-        if (revealHeartBtn && glowingHeartContainer) {
-          revealHeartBtn.classList.remove('hidden', 'fade-out');
-          glowingHeartContainer.classList.add('hidden');
-          glowingHeartContainer.classList.remove('animate-heart-bloom');
-        }
-
-        // Relight cake
-        if (window.cakeInteraction) {
-          window.cakeInteraction.relightCandles();
-        }
-      }, 500);
-    });
-  }
-}
-
-/**
- * Triggers lines appearing one by one in the cinematic intro
- */
-function startIntroSequence(config) {
-  const lineEls = [
-    document.getElementById('intro-line-1'),
-    document.getElementById('intro-line-2'),
-    document.getElementById('intro-line-3')
-  ];
-
-  const continueBtn = document.getElementById('intro-continue-btn');
-
-  // Custom lines from config if set
-  if (config.introLines && config.introLines.length >= 3) {
-    lineEls[0].textContent = config.introLines[0];
-    lineEls[1].textContent = config.introLines[1];
-    lineEls[2].textContent = config.introLines[2];
-  }
-
-  lineEls.forEach(el => {
-    el.classList.remove('active');
-    el.style.opacity = '0';
-  });
-  if (continueBtn) {
-    continueBtn.classList.add('hidden');
-    continueBtn.style.opacity = '0';
-  }
-
-  // Staggered reveals
-  setTimeout(() => {
-    lineEls[0].classList.add('active');
-  }, 400);
-
-  setTimeout(() => {
-    lineEls[1].classList.add('active');
-  }, 2200);
-
-  setTimeout(() => {
-    lineEls[2].classList.add('active');
-  }, 4200);
-
-  setTimeout(() => {
-    if (continueBtn) {
-      continueBtn.classList.remove('hidden');
-      continueBtn.classList.add('fade-in');
-      continueBtn.style.opacity = '1';
-    }
-  }, 5800);
-}
-
-/**
- * Typewriter effect for the heartfelt letter when scrolled into view
- */
-function setupScrollAnimations(config) {
-  const letterSection = document.getElementById('section-letter');
-  const letterBody = document.getElementById('letter-content-body');
-  let letterRevealed = false;
-
-  if (letterSection && letterBody) {
-    const paragraphs = config.letter?.paragraphs || [];
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !letterRevealed) {
-          letterRevealed = true;
-          revealLetterParagraphs(letterBody, paragraphs);
-        }
-      });
-    }, { threshold: 0.25 });
-
-    observer.observe(letterSection);
-  }
-}
-
-function revealLetterParagraphs(container, paragraphs) {
-  container.innerHTML = '';
-
-  paragraphs.forEach((pText, pIndex) => {
-    const pEl = document.createElement('p');
-    pEl.className = 'letter-paragraph';
-    pEl.style.opacity = '0';
-    pEl.style.transform = 'translateY(12px)';
-    pEl.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-    pEl.textContent = pText;
-    container.appendChild(pEl);
-
-    setTimeout(() => {
-      pEl.style.opacity = '1';
-      pEl.style.transform = 'translateY(0)';
-    }, pIndex * 1400 + 300);
-  });
-}
-
-/**
- * Generates aesthetic QR code inside interactive modal
- */
-function setupQRCodeModal(config) {
-  const openQRBtn = document.getElementById('open-qr-modal-btn');
-  const closeQRBtn = document.getElementById('close-qr-modal-btn');
-  const qrModal = document.getElementById('qr-modal');
-  const qrCanvas = document.getElementById('qr-canvas-preview');
-  const qrUrlInput = document.getElementById('qr-target-url');
-  const qrUpdateBtn = document.getElementById('qr-update-btn');
-  const qrDownloadBtn = document.getElementById('qr-download-btn');
-
-  if (!qrModal) return;
-
-  const getTargetUrl = () => {
-    // If running on localhost or file, provide helpful reminder
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
-    if (isLocal) {
-      return "https://my-bestie-birthday-surprise.vercel.app";
-    }
-    return window.location.href;
-  };
-
-  const drawAestheticQRCode = (url) => {
-    if (!qrCanvas) return;
-    if (typeof QRCode !== 'undefined' && QRCode.toCanvas) {
-      QRCode.toCanvas(qrCanvas, url, {
-        width: 240,
-        margin: 2,
-        color: {
-          dark: '#3d1544',  // elegant deep wine / plum for high scannability
-          light: '#ffffff'
-        },
-        errorCorrectionLevel: 'H'
-      }, (err) => {
-        if (err) console.error("QR Code Error:", err);
-      });
-    }
-  };
-
-  if (openQRBtn) {
-    openQRBtn.addEventListener('click', () => {
-      qrModal.classList.remove('hidden');
-      if (qrUrlInput) {
-        if (!qrUrlInput.value) {
-          qrUrlInput.value = getTargetUrl();
-        }
-        drawAestheticQRCode(qrUrlInput.value);
       }
     });
   }
 
-  if (closeQRBtn) {
-    closeQRBtn.addEventListener('click', () => {
-      qrModal.classList.add('hidden');
+  // Bind All "← Return to Universe" Buttons
+  document.querySelectorAll('[data-back="true"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.chapter-view-container').forEach(v => v.classList.add('hidden'));
+      const universeScreen = document.getElementById('screen-universe');
+      universeScreen.classList.remove('hidden');
+      universeScreen.classList.add('fade-in');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  }
-
-  qrModal.addEventListener('click', (e) => {
-    if (e.target === qrModal) {
-      qrModal.classList.add('hidden');
-    }
   });
 
-  if (qrUpdateBtn && qrUrlInput) {
-    qrUpdateBtn.addEventListener('click', () => {
-      drawAestheticQRCode(qrUrlInput.value || getTargetUrl());
-    });
-  }
-
-  // Export & Download high-res QR Polaroid Card
-  if (qrDownloadBtn && qrCanvas) {
-    qrDownloadBtn.addEventListener('click', () => {
-      downloadAestheticQRCard(qrCanvas, config);
+  // Replay universe button
+  const replayBtn = document.getElementById('replay-universe-btn');
+  if (replayBtn) {
+    replayBtn.addEventListener('click', () => {
+      document.querySelectorAll('.chapter-view-container').forEach(v => v.classList.add('hidden'));
+      const universeScreen = document.getElementById('screen-universe');
+      universeScreen.classList.remove('hidden');
+      universeScreen.classList.add('fade-in');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 }
 
 /**
- * Creates a high-res printable Polaroid Card image with QR Code & "Scan Me ❤️"
+ * CHAPTER 1: Our Memories
  */
-function downloadAestheticQRCard(sourceCanvas, config) {
-  const cardCanvas = document.createElement('canvas');
-  cardCanvas.width = 600;
-  cardCanvas.height = 780;
-  const ctx = cardCanvas.getContext('2d');
+function setupChapterMemories(config) {
+  const container = document.getElementById('memories-deck');
+  if (!container || !Array.isArray(config.memories)) return;
 
-  // Background card with soft border & subtle shadow
-  ctx.fillStyle = '#ffffff';
-  ctx.roundRect(20, 20, 560, 740, 24);
-  ctx.fill();
+  container.innerHTML = '';
+  config.memories.forEach(mem => {
+    const card = document.createElement('div');
+    card.className = 'cinematic-memory-card glass-card';
+    card.innerHTML = `
+      <div class="memory-photo-container">
+        <img src="${mem.image}" alt="${mem.title}" loading="lazy">
+        ${mem.tag ? `<span class="memory-photo-tag">${mem.tag}</span>` : ''}
+      </div>
+      <div>
+        <div class="memory-date">${mem.date || ''}</div>
+        <h3 class="memory-title">${mem.title}</h3>
+        <p class="memory-desc">${mem.caption}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
 
-  // Subtle pastel gradient header banner
-  const bannerGrad = ctx.createLinearGradient(20, 20, 580, 160);
-  bannerGrad.addColorStop(0, '#ffd1dc');
-  bannerGrad.addColorStop(1, '#e0c3fc');
-  ctx.fillStyle = bannerGrad;
-  ctx.beginPath();
-  ctx.roundRect(20, 20, 560, 130, [24, 24, 0, 0]);
-  ctx.fill();
+/**
+ * CHAPTER 2: Something I Never Say
+ */
+let neverSayTimeoutIds = [];
+function setupChapterNeverSay(config) {
+  const container = document.getElementById('sentence-stream');
+  if (!container) return;
 
-  // Title on Banner
-  ctx.fillStyle = '#5c2d58';
-  ctx.font = 'bold 30px "Playfair Display", Georgia, serif';
-  ctx.textAlign = 'center';
-  const bestieName = config.bestieName || 'Bestie';
-  ctx.fillText(`For My Bestie ${bestieName} ✨`, 300, 75);
+  container.innerHTML = '';
+  const lines = config.neverSayLines || [];
+  lines.forEach((lineText, idx) => {
+    const p = document.createElement('p');
+    p.className = `never-say-line ${idx === lines.length - 1 ? 'highlight' : ''}`;
+    p.textContent = lineText;
+    p.id = `never-say-line-${idx}`;
+    container.appendChild(p);
+  });
+}
 
-  ctx.font = '500 16px "Plus Jakarta Sans", sans-serif';
-  ctx.fillStyle = '#7a3e74';
-  ctx.fillText('A digital birthday surprise made just for you', 300, 108);
+function triggerNeverSaySequence() {
+  neverSayTimeoutIds.forEach(id => clearTimeout(id));
+  neverSayTimeoutIds = [];
 
-  // Draw QR code onto card
-  ctx.drawImage(sourceCanvas, 130, 190, 340, 340);
+  const lines = document.querySelectorAll('.never-say-line');
+  lines.forEach(l => l.classList.remove('active'));
 
-  // "Scan Me ❤️" label
-  ctx.fillStyle = '#ff4d6d';
-  ctx.font = 'bold 36px "Playfair Display", Georgia, serif';
-  ctx.fillText('Scan Me ❤️', 300, 600);
+  lines.forEach((lineEl, idx) => {
+    const tId = setTimeout(() => {
+      lineEl.classList.add('active');
+    }, idx * 1600 + 400);
+    neverSayTimeoutIds.push(tId);
+  });
+}
 
-  // Sub caption
-  ctx.fillStyle = '#8e7992';
-  ctx.font = '16px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText('Point your phone camera to open the surprise', 300, 640);
+/**
+ * CHAPTER 3: Our Chaos (Playful prank buttons)
+ */
+function setupChapterChaos(config) {
+  const container = document.getElementById('chaos-container');
+  if (container && config.chaos?.cards) {
+    container.innerHTML = '';
+    config.chaos.cards.forEach(c => {
+      const card = document.createElement('div');
+      card.className = 'chaos-card glass-card';
+      card.innerHTML = `
+        <div class="chaos-quote">${c.quote}</div>
+        <div class="chaos-subtext">${c.subtext}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
 
-  // Tiny hearts decoration
-  ctx.font = '22px sans-serif';
-  ctx.fillText('🎂 ✨ 🎁', 300, 690);
+  const prankBtn = document.getElementById('prank-btn');
+  const prankResponse = document.getElementById('prank-response');
+  let prankStep = 0;
 
-  // Download trigger
-  const link = document.createElement('a');
-  link.download = `Birthday-Surprise-QR-${bestieName}.png`;
-  link.href = cardCanvas.toDataURL('image/png');
-  link.click();
+  if (prankBtn) {
+    prankBtn.addEventListener('click', () => {
+      if (prankStep === 0) {
+        prankResponse.textContent = "See? I knew you would click it 😂";
+        prankBtn.textContent = "Seriously, Don't Click 🙈";
+        prankStep = 1;
+      } else if (prankStep === 1) {
+        prankResponse.textContent = "Okay, you're impossible. Never change! 💖";
+        prankBtn.textContent = "You Win! 🏆";
+        prankStep = 2;
+      } else {
+        prankResponse.textContent = "Certified Chaos Partner in Crime 🍕✨";
+      }
+    });
+  }
+}
+
+/**
+ * CHAPTER 4: Secret Letter (3D Opening Envelope)
+ */
+function setupChapterLetter(config) {
+  const envelope = document.getElementById('envelope-3d');
+  const openBtn = document.getElementById('open-envelope-btn');
+  const letterSheet = document.getElementById('letter-sheet');
+  const paragraphsArea = document.getElementById('letter-paragraphs-area');
+
+  if (paragraphsArea && config.letter?.paragraphs) {
+    paragraphsArea.innerHTML = '';
+    config.letter.paragraphs.forEach(p => {
+      const pEl = document.createElement('p');
+      pEl.textContent = p;
+      paragraphsArea.appendChild(pEl);
+    });
+  }
+
+  const openAction = () => {
+    if (envelope) envelope.classList.add('open');
+    if (openBtn) openBtn.classList.add('hidden');
+    if (letterSheet) {
+      letterSheet.classList.remove('hidden');
+      letterSheet.classList.add('fade-in');
+    }
+  };
+
+  if (openBtn) openBtn.addEventListener('click', openAction);
+  if (envelope) envelope.addEventListener('click', openAction);
+}
+
+/**
+ * QR Modal Setup
+ */
+function setupQRCodeModal(config) {
+  const openBtn = document.getElementById('open-qr-modal-btn');
+  const closeBtn = document.getElementById('close-qr-modal-btn');
+  const modal = document.getElementById('qr-modal');
+  const canvas = document.getElementById('qr-canvas-preview');
+  const urlInput = document.getElementById('qr-target-url');
+  const updateBtn = document.getElementById('qr-update-btn');
+  const downloadBtn = document.getElementById('qr-download-btn');
+
+  if (!modal) return;
+
+  const renderQR = (url) => {
+    if (canvas && typeof QRCode !== 'undefined' && QRCode.toCanvas) {
+      QRCode.toCanvas(canvas, url, {
+        width: 200,
+        margin: 2,
+        color: { dark: '#1e103f', light: '#ffffff' },
+        errorCorrectionLevel: 'H'
+      });
+    }
+  };
+
+  if (openBtn) {
+    openBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      renderQR(urlInput.value);
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.add('hidden');
+  });
+
+  if (updateBtn) {
+    updateBtn.addEventListener('click', () => renderQR(urlInput.value));
+  }
+
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = `Manvi-Birthday-QR.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  }
 }
